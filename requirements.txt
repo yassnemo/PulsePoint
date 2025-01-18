@@ -4,3 +4,4 @@ beautifulsoup4==4.9.3
 nltk==3.6.3
 Werkzeug==2.0.1
 lxml==4.9.1
+deep-translator==1.11.4

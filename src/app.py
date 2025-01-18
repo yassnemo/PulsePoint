@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import Flask, render_template, request, flash, redirect, url_for, jsonify
 from services.news_scraper import scrape_news
 from services.summarizer import summarize_news
+from services.translator import TranslationService
 import logging
 
 # Set up logging
@@ -9,6 +10,7 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key'
+translation_service = TranslationService()
 
 @app.route('/')
 def index():
@@ -41,6 +43,41 @@ def summarize():
         logger.error(f"Error processing article: {str(e)}")
         flash('An error occurred while processing the article.')
         return redirect(url_for('index'))
+    
+translation_service = TranslationService()
 
+@app.route('/translate', methods=['POST'])
+def translate():
+    try:
+        data = request.get_json()
+        if not data or 'text' not in data or 'language' not in data:
+            return jsonify({'error': 'Missing required fields'}), 400
+            
+        text = data['text']
+        target_lang = data['language'].lower()
+        
+        translated_text = translation_service.translate_text(text, target_lang)
+        if not translated_text:
+            return jsonify({'error': 'Translation failed'}), 500
+            
+        return jsonify({
+            'success': True,
+            'translated': translated_text
+        })
+        
+    except Exception as e:
+        logger.error(f"Translation route error: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/theme', methods=['POST'])
+def update_theme():
+    try:
+        data = request.json
+        theme = data.get('theme')
+        session['theme'] = theme
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
+    
 if __name__ == '__main__':
     app.run(debug=True)
