@@ -125,15 +125,6 @@ main {
     border-color: #e2e8f0;
 }
 
-.submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.submit-btn:active {
-    transform: translateY(0);
-    box-shadow: none;
-}
 .submit-btn {
     width: 50px;
     height: 50px;
@@ -145,7 +136,37 @@ main {
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.submit-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+}
+
+.submit-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.submit-btn:active::after {
+    opacity: 1;
+    transform: scale(2);
+    transition: 0s;
 }
 
 .submit-btn svg {
