@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">BBC News Summarizer</h2>
+                <form action="{{ url_for('summarize') }}" method="post">
+                    <div class="mb-3">
+                        <label for="url" class="form-label">Enter BBC News URL</label>
+                        <input type="url" class="form-control" id="url" name="url" required
+                               placeholder="https://www.bbc.com/news/...">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Summarize</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

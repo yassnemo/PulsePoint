@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        {% if summaries %}
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">{{ summaries.title }}</h2>
+                    <div class="summary-content">
+                        {{ summaries.summary }}
+                    </div>
+                    <a href="/" class="btn btn-primary mt-3">Summarize Another Article</a>
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-danger">
+                Unable to process the article. Please check the URL and try again.
+            </div>
+            <a href="/" class="btn btn-primary">Try Again</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
