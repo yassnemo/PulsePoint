@@ -1,8 +1,9 @@
 # README.md
 
-# Flask News Summarizer
+# 📰 NewsGist
 
-This project is a Flask-based web application that helps users summarize news articles from BBC.com. The design is modern, simple, and easy to understand.
+> A modern Flask web application that transforms lengthy BBC news articles into concise, readable summaries using AI.
+
 
 ## Project Structure
 
