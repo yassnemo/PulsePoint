@@ -1,20 +1,16 @@
 {% extends "base.html" %}
+
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="card-title text-center mb-4">BBC News Summarizer</h2>
-                <form action="{{ url_for('summarize') }}" method="post">
-                    <div class="mb-3">
-                        <label for="url" class="form-label">Enter BBC News URL</label>
-                        <input type="url" class="form-control" id="url" name="url" required
-                               placeholder="https://www.bbc.com/news/...">
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Summarize</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<form class="url-form" method="POST" action="{{ url_for('summarize') }}">
+    <input type="url" 
+           name="url" 
+           class="url-input" 
+           placeholder="Enter BBC News article URL..." 
+           required>
+           <button type="submit" class="submit-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.593 13.812c-.196.287-.455.53-.758.710L8.594 20.648c-1.13.679-2.591.348-3.262-.735a2.226 2.226 0 01-.25-1.772c.522-1.883.81-3.766.866-5.65a23.312 23.312 0 00-.534-5.66c-.269-1.243.558-2.484 1.845-2.77a2.396 2.396 0 011.811.308l9.88 6.251c1.09.69 1.378 2.12.643 3.193zm-1.53-1.897L8.18 5.661a.79.79 0 00-.598-.101c-.43.095-.704.508-.615.921.38 1.75.573 3.5.577 5.249l3.36.02a.76.76 0 01.771.776.804.804 0 01-.815.765l-3.361-.02a25.37 25.37 0 01-.885 5.239.738.738 0 00.083.587c.223.361.709.47 1.085.245l10.243-6.126a.81.81 0 00.253-.237.749.749 0 00-.215-1.064z" fill="currentColor"/>
+            </svg>
+        </button>
+</form>
 {% endblock %}

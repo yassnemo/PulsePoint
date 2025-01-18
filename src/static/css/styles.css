@@ -6,14 +6,14 @@
     /* Colors - Light Theme */
     --primary: #2563eb;
     --secondary: #3b82f6;
-    --background: #FAF7F0;
-    --card-bg: #ffffff;
+    --background: #ffffff;
+    --card-bg: #FCFAEE;
     --text: #1e293b;
     --text-muted: #64748b;
     --navbar-bg: rgba(255, 255, 255, 0.8);
     --icon-color: #1e293b;
-    --btn-bg: #16404D;
-    --btn-hover: #ad8e80;
+    --btn-bg: #384B70;
+    --btn-hover: #507687;
     --btn-text: #ffffff;
     
     /* Animation */
@@ -72,10 +72,20 @@
     transition: color var(--transition-speed);
 }
 
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    left: auto;
+    min-width: 120px;
+}
+
 
 
 /* Global styles */
 body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background-color: var(--background);
     color: var(--text);
     font-family: var(--font-primary);
@@ -83,22 +93,89 @@ body {
                 color var(--transition-speed);
 }
 
-
-
-.card {
-    background-color: var(--card-bg);
-    color: var(--text);
-    transition: all var(--transition-speed);
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    width: 100%;
 }
 
-.card-title {
-    font-family: var(--font-title);
-    text-transform: uppercase;
-    font-size: 2rem;
-    letter-spacing: 1px;
-    margin-bottom: 1.5rem;
-    color: var(--text);
-    transition: color var(--transition-speed);
+.url-form {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.url-input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background: white;
+    color: #1e293b;
+}
+
+.url-input:focus {
+    outline: none;
+    border-color: #e2e8f0;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+.submit-btn {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+@media (max-width: 768px) {
+    .url-form {
+        flex-direction: column;
+        padding: 1rem;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .url-input {
+        width: 100%;
+    }
+
+    .submit-btn {
+        width: 50px; /* Keep circular shape */
+        height: 50px;
+    }
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    padding: 2rem 0;
 }
 
 /* Theme toggle */
