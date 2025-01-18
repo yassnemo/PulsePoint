@@ -1,6 +1,6 @@
 # README.md
 
-# 📰 NewsGist
+# 📰 PulsePoint
 
 > A modern Flask web application that transforms lengthy BBC news articles into concise, readable summaries using AI.
 
@@ -10,25 +10,23 @@
 ```
 flask-news-app
 ├── src
-│   ├── app.py                # Entry point of the Flask application
-│   ├── templates             # HTML templates for the application
-│   │   ├── base.html         # Base template with common structure
-│   │   ├── index.html        # Main page for user input
+│   ├── app.py                # Entry point of the app
+│   ├── templates            
+│   │   ├── base.html         # Main template with common structure
+│   │   ├── index.html        # Page for user input
 │   │   └── summary.html      # Page displaying summarized news
-│   ├── static                # Static files (CSS, JS)
+│   ├── static                
 │   │   ├── css
 │   │   │   └── styles.css    # CSS styles for modern design
 │   │   └── js
 │   │       └── main.js       # JavaScript for client-side interactions
-│   ├── services              # Services for scraping and summarizing
-│   │   ├── news_scraper.py   # Functions to scrape news articles
-│   │   └── summarizer.py     # Functions to summarize articles
-│   └── utils                 # Utility functions
-│       └── helpers.py        # Helper functions for various tasks
-├── tests                     # Unit tests for the application
-│   └── test_app.py          # Tests to ensure functionality
+│   └── services              
+│       ├── news_scraper.py   # Functions to scrape news articles
+│       └── summarizer.py     # Functions to summarize articles
+├── tests                    
+│   └── test_app.py           # Tests to ensure functionality
 ├── requirements.txt          # Dependencies for the application
-└── README.md                 # Project documentation
+└── README.md                 # Documentation
 ```
 
 ## Setup Instructions
