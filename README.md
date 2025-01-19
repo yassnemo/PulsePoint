@@ -4,10 +4,9 @@
 
 > Is a Flask web application that transforms lengthy BBC news articles into concise, readable summaries using AI.
 
-
-darkmode-image.png
-
-
+![Homepage](public/homepage.png)
+![Light Mode](public/image-snippet.png)
+![Dark Mode](public/darkmode-image.png)
 
 ## Project Structure
 
