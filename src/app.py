@@ -28,7 +28,7 @@ def summarize():
             flash('Unable to process this BBC article.')
             return redirect(url_for('index'))
             
-        logger.debug(f"Article scraped successfully with image: {articles.get('image')}")
+        logger.debug(f"Article scraped: {articles}")  
         
         summaries = summarize_news(articles)
         if not summaries:
@@ -36,9 +36,10 @@ def summarize():
             flash('Failed to summarize the article.')
             return redirect(url_for('index'))
             
-        # Explicitly add image to summaries
+        # Add both image and author to summaries
         summaries['image'] = articles.get('image')
-        logger.debug(f"Final summaries with image: {summaries}")
+        summaries['author'] = articles.get('author')
+        logger.debug(f"Final summaries: {summaries}") 
             
         return render_template('summary.html', summaries=summaries)
         

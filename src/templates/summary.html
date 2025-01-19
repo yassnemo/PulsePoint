@@ -10,12 +10,15 @@
                         <div class="article-title mb-4">
                             <h2 class="card-title">{{ summaries.title }}</h2>
                         </div>
-                        
                         <div class="content-image-wrapper">
                             <!-- Summary Section -->
                             <div class="summary-content-wrapper">
                                 <div class="summary-section">
+                                    <div class="article-author-wrapper">
+                                        By <span class="article-author">{{ summaries.author }}</span>
+                                    </div>
                                     <div class="summary-header">
+                                        <h4 class="summary-label">Summary</h4>
                                         <div class="summary-dropdown dropdown">
                                             <button class="translate-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-translate"></i>
@@ -26,14 +29,12 @@
                                                 <li><a class="dropdown-item" href="#">French</a></li>
                                             </ul>
                                         </div>
-                                        <h4 class="summary-label">Summary</h4>
                                     </div>
                                     <div class="summary-content mb-4">
                                         {{ summaries.summary }}
                                     </div>
                                 </div>
                             </div>
-                            
                             {% if summaries.image %}
                             <div class="article-image">
                                 <img src="{{ summaries.image }}" alt="Article Image">
