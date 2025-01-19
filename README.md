@@ -4,9 +4,7 @@
 
 > Is a Flask web application that transforms lengthy BBC news articles into concise, readable summaries using AI.
 
-![Homepage](public/homepage.png)
 ![Light Mode](public/image-snippet.png)
-![Dark Mode](public/darkmode-image.png)
 
 ## Project Structure
 
@@ -51,6 +49,8 @@ flask-news-app
    ```
 
 4. Open your web browser and go to `http://127.0.0.1:5000` to access the application.
+
+![Dark Mode](public/darkmode-image.png)
 
 ## Usage
 
