@@ -10,22 +10,22 @@
 ```
 flask-news-app
 ├── src
-│   ├── app.py                # Entry point of the app
+│   ├── app.py                # entry point
 │   ├── templates            
-│   │   ├── base.html         # Main template with common structure
-│   │   ├── index.html        # Page for user input
-│   │   └── summary.html      # Page displaying summarized news
+│   │   ├── base.html         # main template
+│   │   ├── index.html        # for user input
+│   │   └── summary.html      # displaying summarized news
 │   ├── static                
 │   │   ├── css
-│   │   │   └── styles.css    # CSS styles for modern design
+│   │   │   └── styles.css    # CSS styles 
 │   │   └── js
-│   │       └── main.js       # JavaScript for client-side interactions
+│   │       └── main.js       # client-side interactions
 │   └── services              
-│       ├── news_scraper.py   # Functions to scrape news articles
-│       └── summarizer.py     # Functions to summarize articles
+│       ├── news_scraper.py   # scrape news articles
+│       └── summarizer.py     # summarize articles
 ├── tests                    
-│   └── test_app.py           # Tests to ensure functionality
-├── requirements.txt          # Dependencies for the application
+│   └── test_app.py           # to ensure functionality
+├── requirements.txt        
 └── README.md                 # Documentation
 ```
 
