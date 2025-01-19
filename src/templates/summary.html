@@ -1,16 +1,49 @@
 {% extends "base.html" %}
-
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-8">
         {% if summaries %}
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title">{{ summaries.title }}</h2>
-                    <div class="summary-content">
-                        {{ summaries.summary }}
+                    <div class="summary-wrapper">
+                        <!-- Title Section -->
+                        <div class="article-title mb-4">
+                            <h2 class="card-title">{{ summaries.title }}</h2>
+                        </div>
+                        
+                        <div class="content-image-wrapper">
+                            <!-- Summary Section -->
+                            <div class="summary-content-wrapper">
+                                <div class="summary-section">
+                                    <div class="summary-header">
+                                        <div class="summary-dropdown dropdown">
+                                            <button class="translate-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-translate"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">English</a></li>
+                                                <li><a class="dropdown-item" href="#">Spanish</a></li>
+                                                <li><a class="dropdown-item" href="#">French</a></li>
+                                            </ul>
+                                        </div>
+                                        <h4 class="summary-label">Summary</h4>
+                                    </div>
+                                    <div class="summary-content mb-4">
+                                        {{ summaries.summary }}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            {% if summaries.image %}
+                            <div class="article-image">
+                                <img src="{{ summaries.image }}" alt="Article Image">
+                            </div>
+                            {% endif %}
+                        </div>
                     </div>
-                    <a href="/" class="btn btn-primary mt-3">Summarize Another Article</a>
+                    <a href="/" class="back-btn">
+                        <i class="bi bi-arrow-left"></i>
+                    </a>
                 </div>
             </div>
         {% else %}

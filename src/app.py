@@ -25,23 +25,26 @@ def summarize():
         articles = scrape_news(url)
         if not articles:
             logger.error("No articles returned from scraper")
-            flash('Unable to process this BBC article. Please check the URL and try again.')
+            flash('Unable to process this BBC article.')
             return redirect(url_for('index'))
             
-        logger.debug(f"Article scraped successfully: {articles['title']}")
+        logger.debug(f"Article scraped successfully with image: {articles.get('image')}")
         
         summaries = summarize_news(articles)
         if not summaries:
             logger.error("Summarization failed")
-            flash('Failed to summarize the article. Please try again.')
+            flash('Failed to summarize the article.')
             return redirect(url_for('index'))
             
-        logger.debug("Article summarized successfully")
+        # Explicitly add image to summaries
+        summaries['image'] = articles.get('image')
+        logger.debug(f"Final summaries with image: {summaries}")
+            
         return render_template('summary.html', summaries=summaries)
         
     except Exception as e:
         logger.error(f"Error processing article: {str(e)}")
-        flash('An error occurred while processing the article.')
+        flash('An error occurred.')
         return redirect(url_for('index'))
     
 translation_service = TranslationService()
@@ -78,6 +81,7 @@ def update_theme():
         return jsonify({'success': True})
     except Exception as e:
         return jsonify({'error': str(e)}), 400
-    
+
+
 if __name__ == '__main__':
     app.run(debug=True)
