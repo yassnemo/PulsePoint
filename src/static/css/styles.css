@@ -4,40 +4,31 @@
     --font-title: 'Poppins', sans-serif;
     
     /* Colors - Light Theme */
-    --primary: #2563eb;
-    --secondary: #3b82f6;
     --background: #ffffff;
     --card-bg: #ffffff;
     --text: #1e293b;
     --text-muted: #64748b;
     --navbar-bg: rgba(255, 255, 255, 0.8);
     --icon-color: #1e293b;
-    --btn-bg: #384B70;
-    --btn-hover: #507687;
-    --btn-text: #ffffff;
     --placeholder-color: #64748b;
     --svg-color: #1e293b;
     --footer-text: #64748b;
     --back-btn-bg: #f1f5f9;
     --back-btn-text: #64748b;
     --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --title-color: #B43F3F;
 
     /* Animation */
     --transition-speed: 0.3s;
 }
 
 [data-theme="dark"] {
-    --primary: #3b82f6;
-    --secondary: #60a5fa;
     --background: #31363F;
     --card-bg: #31363F;
     --text: #f1f5f9;
     --text-muted: #94a3b8;
     --navbar-bg: #31363F;
     --icon-color: #f1f5f9;
-    --btn-bg: #DDA853;
-    --btn-hover: #60a5fa;
-    --btn-text: black;
     --input-bg: #31363F;
     --input-text: #ffffff;
     --placeholder-color: #94a3b8;
@@ -46,7 +37,13 @@
     --back-btn-bg: #475569;
     --back-btn-text: #f1f5f9;
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --title-color: #EA5455;
 
+}
+
+.card-title {
+    color: var(--title-color);
+    transition: color var(--transition-speed);
 }
 
 .back-btn {
@@ -102,7 +99,7 @@
 }
 
 .article-author {
-    color: #f09e5f;
+    color: #11468F;
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
@@ -205,10 +202,17 @@ footer .text-muted {
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: var(--navbar-bg);
-    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.6); 
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: background-color var(--transition-speed);
 }
 
+[data-theme="dark"] .navbar {
+    background-color: rgba(49, 54, 63, 0.6); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
 .navbar-nav {
     display: flex;
     flex-direction: row;
