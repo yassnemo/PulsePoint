@@ -1,15 +1,23 @@
-from flask import Flask, render_template, request, flash, redirect, url_for, jsonify
+from flask import Flask, render_template, request, flash, redirect, url_for, jsonify, session
 from services.news_scraper import scrape_news
 from services.summarizer import summarize_news
 from services.translator import TranslationService
 import logging
+import os
 
 # Set up logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-app = Flask(__name__)
-app.secret_key = 'your-secret-key'
+# Initialize Flask app with correct paths for Vercel
+app = Flask(__name__,
+    template_folder='../templates',
+    static_folder='../static'
+)
+
+app.secret_key = os.environ.get('SECRET_KEY', 'your-secret-key')
+
+# Initialize services
 translation_service = TranslationService()
 
 @app.route('/')
@@ -25,30 +33,22 @@ def summarize():
         articles = scrape_news(url)
         if not articles:
             logger.error("No articles returned from scraper")
-            flash('Unable to process this BBC article.')
-            return redirect(url_for('index'))
+            return jsonify({'error': 'Unable to process article'}), 400
             
-        logger.debug(f"Article scraped: {articles}")  
-        
         summaries = summarize_news(articles)
         if not summaries:
             logger.error("Summarization failed")
-            flash('Failed to summarize the article.')
-            return redirect(url_for('index'))
+            return jsonify({'error': 'Failed to summarize'}), 400
             
-        # Add both image and author to summaries
         summaries['image'] = articles.get('image')
         summaries['author'] = articles.get('author')
-        logger.debug(f"Final summaries: {summaries}") 
+        logger.debug(f"Final summaries: {summaries}")
             
         return render_template('summary.html', summaries=summaries)
         
     except Exception as e:
         logger.error(f"Error processing article: {str(e)}")
-        flash('An error occurred.')
-        return redirect(url_for('index'))
-    
-translation_service = TranslationService()
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/translate', methods=['POST'])
 def translate():
@@ -82,7 +82,12 @@ def update_theme():
         return jsonify({'success': True})
     except Exception as e:
         return jsonify({'error': str(e)}), 400
+    
+# Handler for Vercel
+def handler(request, context):
+    return app(request)
 
+app.debug = True
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
