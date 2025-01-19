@@ -2,7 +2,11 @@
 
 # 📰 PulsePoint
 
-> A modern Flask web application that transforms lengthy BBC news articles into concise, readable summaries using AI.
+> Is a Flask web application that transforms lengthy BBC news articles into concise, readable summaries using AI.
+
+
+![Uploading 127.0.0.1_5000_summarize.png…]()
+
 
 
 ## Project Structure
