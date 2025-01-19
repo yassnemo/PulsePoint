@@ -16,15 +16,10 @@
       },
       {
           "src": "/(.*)",
-          "dest": "api/index.py",
+          "dest": "/api/index.py",
           "headers": {
               "Content-Type": "text/html; charset=utf-8"
           }
       }
-  ],
-  "functions": {
-      "api/index.py": {
-          "includeFiles": ["templates/**", "static/**"]
-      }
-  }
+  ]
 }
