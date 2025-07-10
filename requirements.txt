@@ -3,4 +3,6 @@ beautifulsoup4==4.12.2
 playwright==1.41.2
 python-dotenv==1.0.0
 requests==2.31.0
-gunicorn==21.2.0 
+gunicorn==21.2.0
+lxml==4.9.3
+html5lib==1.1 
