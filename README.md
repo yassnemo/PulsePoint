@@ -20,7 +20,7 @@ PulsePoint/
 ├── src/
 │   └── app.py               # Development entry point
 ├── api/
-│   ├── index.py             # API routes (Vercel)
+│   ├── index.py             # API routes
 │   └── services/
 │       ├── news_scraper.py  # Web scraping service
 │       ├── summarizer.py    # AI summarization service

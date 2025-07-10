@@ -9,7 +9,7 @@ import os
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-# Initialize Flask app with correct paths for Vercel
+# Initialize Flask app
 app = Flask(__name__,
     template_folder='../templates',
     static_folder='../static'
@@ -82,12 +82,6 @@ def update_theme():
         return jsonify({'success': True})
     except Exception as e:
         return jsonify({'error': str(e)}), 400
-    
-# Handler for Vercel
-def handler(request, context):
-    return app(request)
-
-app.debug = True
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
