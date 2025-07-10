@@ -89,9 +89,13 @@ def update_theme():
     except Exception as e:
         return jsonify({'error': str(e)}), 400
 
-# Set debug mode
-app.debug = True
-
 if __name__ == '__main__':
     print("PulsePoint application is running at http://127.0.0.1:5000")
-    app.run(host='127.0.0.1', port=5000)
+    # Use threaded mode and disable reloader on Windows to avoid socket errors
+    app.run(
+        host='127.0.0.1', 
+        port=5000, 
+        debug=True,
+        threaded=True,
+        use_reloader=False  # Disable auto-reloader to prevent Windows socket errors
+    )
