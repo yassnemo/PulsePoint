@@ -46,7 +46,11 @@ flask-news-app
 
 3. Run the application:
    ```
+   # Option 1: Direct execution
    python src/app.py
+   
+   # Option 2: Windows-optimized startup (recommended for Windows)
+   python run_app.py
    ```
 
 4. Open your web browser and go to `http://127.0.0.1:5000` to access the application.
